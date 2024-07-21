@@ -1,5 +1,6 @@
 # notion 任務接待員
-
+![cover](./img/cover.png)
+<!-- creadit :pixai.art-->
 ## 簡介
 ### 這是什麼？
 
