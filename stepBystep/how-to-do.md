@@ -2,7 +2,7 @@
 
 最近事情蠻多的，但都不是什麼急事，就想一直拖，連帶讓我的累累病發作。
 
-** 呀咧呀咧，is time to work **
+#### **呀咧呀咧，is time to work**
 
 但又很難決定要先做什麼。看來我需要有個冒險公會每日指派任務給我，所以我決定用 notion 每天隨機抽出一件事放進今天做完清單，有精力再領別的事來做。
 
@@ -48,4 +48,4 @@ DB id 就是 3cdd807b718c4162928bbdb4b883c0e6。
 
 就是這樣啦，希望大家的事情都可以如期做完。拖延症和累累病退散
 
-[![alt text](minoto_and_hinoa_by_mcdobo_degkfuv-fullview.jpg)](https://www.deviantart.com/mcdobo/art/Minoto-and-Hinoa-874353991)
+[<img src="minoto_and_hinoa_by_mcdobo_degkfuv-fullview.jpg" alt="drawing" style="width:600px;"/>](https://www.deviantart.com/mcdobo/art/Minoto-and-Hinoa-874353991)
