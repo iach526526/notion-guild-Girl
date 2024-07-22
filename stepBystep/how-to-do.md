@@ -32,7 +32,7 @@ DB id 就是 3cdd807b718c4162928bbdb4b883c0e6。
 ![copy-db-id](dbid.png)
 
 
-最後我把程式放在 GitHub ，並使用 Gihub action 每天排程自動執行發派任務。當然如果要專門用伺服器跑，或是把程式寫成 JavaScript 放在 Google app Script 讓 iphone 捷徑每天定時自己去呼叫也是可以。有 N 種方法可以自動執行，挑你認為最方便的方式就好。
+最後我把程式放在 GitHub ，並使用 GiHub action 每天排程自動執行發派任務。當然如果要專門用伺服器跑，或是把程式寫成 JavaScript 放在 Google app Script 讓 iPhone 捷徑每天定時自己去呼叫也是可以。有很多種方法可以自動執行，挑你認為最方便的方式就好。
 
 如果 notion 資料庫用的和我一樣也可以直接 fork 我的 repo ，在自己 repo 的 Setting > Secrets and variables > Actions > new repository secret 配置自己的 NOTION_TOKEN 和 DATABASE_ID (命名需要和我一樣，不然要自己改.github/workflows)。
 
