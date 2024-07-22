@@ -22,8 +22,13 @@ def query_database(filter_json):
         headers=headers,
         json=filter_json
     )
-    print(response.json())
-    return response.json()["results"]
+    
+    try:
+        return response.json()["results"]
+    except:
+        print(response.json())
+        print("Error fetching entries.make sure the database id is correct, Integrations have connect with dayabases")
+        return []
 
 def update_entry(entry_id, new_tag):
     response = requests.patch(

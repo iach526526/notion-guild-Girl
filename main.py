@@ -33,5 +33,6 @@ if __name__ == "__main__":
     if selected_entry:
         entry_id = selected_entry["id"]
         update_response = update_entry(entry_id, "🔥今日重點")
+        print("mission accomplished!")
     else:
         print("No entries found with the 'random' tag")
