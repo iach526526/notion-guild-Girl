@@ -1,77 +1,37 @@
-import os
-import requests
-import json
-import random
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv(f'{os.getcwd()}/.env')
-token = os.getenv('Notion-token')
-database_id = os.getenv('Database-id')
-
-headers = {
-    "Authorization": f"Bearer {token}",
-    "Content-Type": "application/json",
-    "Notion-Version": "2022-06-28"
-}
-
-def query_database(filter_json):
-    response = requests.post(
-        f"https://api.notion.com/v1/databases/{database_id}/query",
-        headers=headers,
-        json=filter_json
-    )
-    data = response.json()
-    return data["results"]
-
-def update_entry(entry_id, new_tag):
-    response = requests.patch(
-        f"https://api.notion.com/v1/pages/{entry_id}",
-        headers=headers,
-        json={
-            "properties": {
-                "優先順序": {
-                    "select": {"name": new_tag}
-                }
-            }
-        }
-    )
-    return response.json()
+from notion_api import query_database, update_entry
+from utils import select_random_entry, create_filter
 if __name__ == "__main__":
     # Step 1: Reset priority for entries with "🔥今日重點" and "Done?" unchecked
-    reset_filter = {
+    #把情境包含"🔥今日重點"標籤且"Done?"未勾選的條目重置為"等待"(這些就是昨天沒做完的啦)
+    reset_filter = create_filter("優先順序", "select", {"equals": "🔥今日重點"})
+    done_filter = create_filter("Done?", "checkbox", {"equals": False})
+
+    reset_entries = query_database({
         "filter": {
-            "and": [
-                {
-                    "property": "優先順序",
-                    "select": {"equals": "🔥今日重點"}
-                },
-                {
-                    "property": "Done?",
-                    "checkbox": {"equals": False}
-                }
-            ]
+            "and": [reset_filter["filter"], done_filter["filter"]]
         }
-    }
-    reset_entries = query_database(reset_filter)
+    })
 
     for entry in reset_entries:
         update_entry(entry["id"], "等待")
 
-    # Step 2: Fetch entries with "🎲random" tag and select a random one
-    random_filter = {
+    # Step 2: Fetch entries with "🎲random" tag and  and "Done?" unchecked
+    #把情境包含"🎲random"標籤的條目且"Done?"未勾選的條目抓取出來
+    random_filter = create_filter("情境", "multi_select", {"contains": "🎲random"})
+    random_done_filter = create_filter("Done?", "checkbox", {"equals": False})
+
+    entries = query_database({
         "filter": {
-            "property": "情境",
-            "multi_select": {"contains": "🎲random"}
+            "and": [random_filter["filter"], random_done_filter["filter"]]
         }
-    }
-    entries = query_database(random_filter)
+    })
+
 
     # Select a random entry and update its priority to "🔥今日重點"
-    if entries:
-        selected_entry = random.choice(entries)
+    #隨機選擇一個條目並將其優先順序更新為"🔥今日重點"
+    selected_entry = select_random_entry(entries)
+    if selected_entry:
         entry_id = selected_entry["id"]
         update_response = update_entry(entry_id, "🔥今日重點")
-        print(update_response)
     else:
         print("No entries found with the 'random' tag")
