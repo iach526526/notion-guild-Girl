@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Environment variables
-token = os.getenv('Notion-token')
-database_id = os.getenv('Database-id')
+token = os.getenv('Notion_token')
+database_id = os.getenv('Database_id')
 
 # Headers for the Notion API requests
 headers = {
