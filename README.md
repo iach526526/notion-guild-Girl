@@ -1,6 +1,8 @@
-# Notion Task Receptionist
+# Notion Guild Girl
+
 ![cover](./img/cover.png)
-![繁體中文](./README_zh.md)
+
+[![](https://img.shields.io/badge/翻譯-繁體中文-blue)](./README_zh.md)
 <!-- credit: pixai.art -->
 ## Introduction
 ### What is this?

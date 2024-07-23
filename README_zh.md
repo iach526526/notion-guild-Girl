@@ -1,7 +1,8 @@
 # notion 任務接待員
 ![cover](./img/cover.png)
-![English](./README.md)
 <!-- creadit :pixai.art-->
+
+[![](https://img.shields.io/badge/translate-English-yellow)](https://github.com/iach526526/notion-guild-Girl?tab=readme-ov-file#notion-task-receptionist)
 ## 簡介
 ### 這是什麼？
 
